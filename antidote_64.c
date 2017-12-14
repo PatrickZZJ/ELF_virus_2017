@@ -18,7 +18,7 @@
  *		Peter Kooijmans
  */
 
-#include "syscall01.h"
+#include "syscall_64.h"
 #include <elf.h>
 #include <stdio.h>
 
