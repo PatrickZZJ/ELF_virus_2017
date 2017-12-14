@@ -37,7 +37,7 @@
 #define PATH_LIST_ENTRY_SIZE	64
 #define EXEC_SIZE				64
 
-#define RECOVER		10
+#define RECOVER		100
 #define VICTIM		10
 #define ATTEMPTS	100
 
