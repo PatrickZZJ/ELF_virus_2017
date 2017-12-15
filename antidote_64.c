@@ -1,22 +1,11 @@
-/*Name        : read_log.c
+/*Name        : antidote_64.c
  Author      : tigerny
  Version     :
  Copyright   : Your copyright notice
- Description : Hello World in C, Ansi-style
+ Description : antidote in C, Ansi-style
  ============================================================================
  */
 
-/*
- * This file implements a simple virus to infect ELF binaries on
- * 32-bit x86 GNU/linux machines. The virus does nothing more harmful
- * than spread itself to other binaries, spreading itself further from
- * there. Infection progress is logged in /tmp/.infection-progress.
- *
- * Written as the final assignment for the course 2WC06 Hackers Hutt, by:
- * 		Rene Gabriels
- *		Dirk Gerrits
- *		Peter Kooijmans
- */
 
 #include "syscall_64.h"
 #include <elf.h>
